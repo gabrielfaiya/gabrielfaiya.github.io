@@ -64,9 +64,9 @@ a{color:inherit}
 /* séries */
 .serie{padding:clamp(80px,11vw,160px) 0 clamp(40px,6vw,90px)}
 .serie header{margin-bottom:clamp(40px,6vw,90px);align-items:end}
-.serie .rotulo{grid-column:1/13;padding-top:0}
-.serie h2{grid-column:1/8;margin:0;font-weight:500;font-variation-settings:"wdth" 112;font-size:clamp(40px,5.2vw,84px);line-height:.95;letter-spacing:-.02em;text-wrap:balance}
-.serie .intro{grid-column:9/13;align-self:end;margin:0;color:#cfc6b6;font-size:16.5px;max-width:36ch}
+.serie .rotulo{grid-column:1/4}
+.serie h2{grid-column:4/9;margin:0;font-weight:500;font-variation-settings:"wdth" 120;font-size:clamp(44px,6.5vw,96px);line-height:.95;letter-spacing:-.02em;text-wrap:balance}
+.serie .intro{grid-column:9/13;margin:0;color:#cfc6b6;font-size:16.5px;max-width:36ch}
 .folhas{row-gap:clamp(40px,7vw,110px)}
 .folhas figure{margin:0;grid-column:var(--c);align-self:var(--a,start);cursor:zoom-in}
 .folhas figure.desce{margin-top:clamp(0px,9vw,140px)}
@@ -113,10 +113,6 @@ a{color:inherit}
 #prox{right:8px;top:50%;transform:translateY(-50%)}
 .visor button:focus-visible,a:focus-visible,figure:focus-visible{outline:2px solid var(--terracota);outline-offset:4px}
 
-@media (max-width:1240px){
-  .serie h2{grid-column:1/13}
-  .serie .intro{grid-column:1/13;margin-top:6px}
-}
 @media (max-width:900px){
   .capa h1{grid-column:1/13}
   .capa .sub{grid-column:1/13;margin-top:18px}
