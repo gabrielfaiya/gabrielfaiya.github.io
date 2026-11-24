@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pdf.html
+Disallow: /apresentacao.html
+Sitemap: https://gabrielfaiya.github.io/sitemap.xml

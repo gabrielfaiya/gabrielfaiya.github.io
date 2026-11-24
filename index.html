@@ -3,88 +3,121 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gabriel Faiya, fotógrafo</title>
-<meta name="description" content="Gabriel Faiya, fotógrafo em Curitiba. Retrato e fotografia editorial com abordagem documental.">
-<meta property="og:title" content="Gabriel Faiya, fotógrafo">
-<meta property="og:description" content="Retrato e fotografia editorial em Curitiba.">
-<meta property="og:image" content="img/capa-cortejo.jpg">
+<title>Gabriel Faiya, fotografia e cinematografia em Curitiba</title>
+<meta name="description" content="Gabriel Faiya, fotógrafo e cinegrafista em Curitiba. Retrato, vídeo e fotografia editorial com abordagem documental, para artistas, marcas e publicações.">
+<link rel="canonical" href="https://gabrielfaiya.github.io/">
+<meta name="theme-color" content="#12110f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://gabrielfaiya.github.io/">
+<meta property="og:title" content="Gabriel Faiya, fotografia e cinematografia">
+<meta property="og:description" content="Retrato, vídeo e fotografia editorial em Curitiba.">
+<meta property="og:image" content="https://gabrielfaiya.github.io/img/capa-cortejo.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1067">
+<meta property="og:image:alt" content="Cortejo de dançarinas vestidas de branco e amarelo numa rua de Curitiba.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="img/capa-cortejo-1600.webp" imagesrcset="img/capa-cortejo-640.webp 640w, img/capa-cortejo-1080.webp 1080w, img/capa-cortejo-1600.webp 1600w" imagesizes="100vw" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..800;1,62..125,300..500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Gabriel Faiya","url":"https://gabrielfaiya.github.io/","image":"https://gabrielfaiya.github.io/img/capa-cortejo.jpg","jobTitle":["Fotógrafo","Cinegrafista"],"description":"Fotógrafo e cinegrafista em Curitiba. Retrato, vídeo e fotografia editorial com abordagem documental.","email":"mailto:fotosgabrielfaiya@gmail.com","telephone":"+55 41 99980-8263","address":{"@type":"PostalAddress","addressLocality":"Curitiba","addressRegion":"PR","addressCountry":"BR"},"sameAs":["https://www.instagram.com/gabrielfaiya/"]}
+</script>
 <style>
 /*
 VOICE: calmo, editorial, de publicação independente de fotografia. Poucas palavras.
-IDEA: um fotolivro impresso. Capa sangrada, folha de rosto com o manifesto, séries em páginas assimétricas, detalhes como pausas.
+IDEA: um fotolivro impresso. Cada série abre com uma ficha e um fio na sua cor; o resto é preto, areia e fotografia.
 PICTURE: as próprias fotografias, sempre maiores que o texto.
-COLOUR and TYPE: preto quente e areia em campos inteiros, terracota só como acento mínimo. Archivo expandida no nome e nos títulos, normal no texto.
-LAYOUT: grade de 12 colunas com imagens deslocadas, muito respiro, uma coluna no celular.
+COLOUR and TYPE: preto quente e areia em campos inteiros; terracota, mostarda, verde, azul e areia escura só como fio de cada série. Archivo.
+LAYOUT: grade de 12 colunas com imagens deslocadas, muito respiro, uma coluna no celular. Menu fino que volta ao rolar para cima.
 */
 :root{
   --preto:#12110f; --preto-2:#1b1916; --areia:#e7dfd0; --areia-2:#ddd3c1;
-  --terracota:#b4532a; --tinta:#16140f; --claro:#efe8db; --cinza:#9b9284;
+  --terracota:#b4532a; --tinta:#16140f; --claro:#efe8db; --cinza:#9b9284; --cinza-claro:#5f5849;
   color-scheme:dark;
 }
 *{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:24px}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{margin:0;background:var(--preto);color:var(--claro);font:16px/1.6 "Archivo",system-ui,sans-serif;font-variation-settings:"wdth" 100;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body.travado{overflow:hidden}
 img{display:block;width:100%;height:auto}
+picture{display:block}
 a{color:inherit}
 .wrap{max-width:1360px;margin:0 auto;padding:0 max(5vw,20px)}
 .grade{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
 .rotulo{font-size:14px;margin:0;padding-top:.7em;color:var(--cinza)}
+.pular{position:absolute;left:-9999px;top:8px;z-index:20;background:var(--areia);color:var(--tinta);padding:10px 14px}
+.pular:focus{left:8px}
 
-/* topo */
-.topo{position:absolute;inset:0 0 auto 0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px max(5vw,20px);font-size:15px}
-.topo .marca{font-weight:600;font-variation-settings:"wdth" 118;text-decoration:none;letter-spacing:.01em}
+/* menu */
+.topo{position:fixed;inset:0 0 auto 0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px max(5vw,20px);font-size:15px;transition:transform .35s ease,background-color .35s ease}
+.topo.solido{background:rgba(18,17,15,.94);backdrop-filter:blur(6px)}
+.topo.escondido{transform:translateY(-100%)}
+.topo .marca{font-weight:600;font-variation-settings:"wdth" 118;text-decoration:none;letter-spacing:.01em;padding:10px 0}
 .topo nav{display:flex;gap:22px;flex-wrap:wrap}
 .topo nav a{text-decoration:none;opacity:.85;padding:10px 0}
 .topo nav a:hover,.topo nav a:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--terracota)}
 
 /* capa */
 .capa{position:relative;height:100svh;min-height:560px;max-height:1100px;overflow:hidden;background:#000}
-.capa img{position:absolute;inset:0;height:100%;object-fit:cover;object-position:50% 38%;animation:surge 2.4s ease-out both}
-.capa::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,8,.82) 0%,rgba(10,9,8,.15) 45%,rgba(10,9,8,0) 70%),linear-gradient(to bottom,rgba(10,9,8,.45),rgba(10,9,8,0) 18%)}
+.capa picture,.capa img{position:absolute;inset:0;width:100%;height:100%}
+.capa img{object-fit:cover;object-position:50% 38%;animation:surge 2.4s ease-out both}
+.capa::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,8,.85) 0%,rgba(10,9,8,.15) 48%,rgba(10,9,8,0) 70%),linear-gradient(to bottom,rgba(10,9,8,.5),rgba(10,9,8,0) 18%)}
 .capa .texto{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:0 max(5vw,20px) clamp(28px,6vh,64px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:end;gap:0 24px}
 .capa h1{grid-column:1/10;margin:0;font-weight:600;font-variation-settings:"wdth" 125;font-size:clamp(52px,10vw,150px);line-height:.92;letter-spacing:-.02em}
 .capa .sub{grid-column:10/13;margin:0 0 .6em;font-size:17px;line-height:1.45}
 .capa .sub em{display:block;font-style:italic;font-variation-settings:"wdth" 100;font-size:clamp(20px,1.8vw,26px);margin-top:6px;color:#fff}
+.capa .acoes{display:flex;gap:22px;margin-top:18px;font-size:15.5px}
+.capa .acoes a{text-decoration:none;border-bottom:1px solid var(--terracota);padding:8px 0 3px}
+.capa .acoes a:hover,.capa .acoes a:focus-visible{color:#fff;border-color:#fff}
 @keyframes surge{from{transform:scale(1.04);opacity:.6}to{transform:none;opacity:1}}
-@media (prefers-reduced-motion:reduce){.capa img{animation:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.capa img{animation:none}html{scroll-behavior:auto}.topo{transition:none}}
 
 /* manifesto e índice */
 .manifesto{background:var(--areia);color:var(--tinta);padding:clamp(72px,12vw,170px) 0 clamp(56px,8vw,110px)}
-.manifesto .rotulo{grid-column:1/4;color:#6f6759}
+.manifesto .rotulo{grid-column:1/4;color:var(--cinza-claro)}
 .manifesto .corpo{grid-column:4/12}
 .manifesto p.m{margin:0 0 .9em;font-size:clamp(26px,3.3vw,46px);line-height:1.18;letter-spacing:-.01em;text-wrap:balance}
 .manifesto p.m + p.m{padding-left:clamp(0px,8vw,140px)}
-.indice{grid-column:4/13;margin:clamp(40px,7vw,100px) 0 0;padding:24px 0 0;border-top:1px solid #c9bea9;list-style:none;display:flex;flex-wrap:wrap;gap:10px 34px}
-.indice a{text-decoration:none;font-size:clamp(18px,1.6vw,22px);font-variation-settings:"wdth" 112;padding:6px 0;display:inline-block}
-.indice a:hover,.indice a:focus-visible{text-decoration:underline;text-decoration-color:var(--terracota);text-underline-offset:6px}
+.indice{grid-column:4/13;margin:clamp(40px,7vw,100px) 0 0;padding:24px 0 0;border-top:1px solid #c9bea9;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px 28px}
+@media (max-width:900px){.indice{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))!important}}
+.indice a{text-decoration:none;display:block;padding:4px 0}
+.indice b{display:block;font-weight:400;font-size:clamp(18px,1.6vw,22px);font-variation-settings:"wdth" 112}
+.indice small{display:block;font-size:13.5px;color:var(--cinza-claro);margin-top:2px}
+.indice a::before{content:"";display:block;width:28px;height:3px;background:var(--cor);margin-bottom:10px}
+.indice a:hover b,.indice a:focus-visible b{text-decoration:underline;text-decoration-color:var(--cor);text-underline-offset:6px}
 
 /* séries */
 .serie{padding:clamp(80px,11vw,160px) 0 clamp(40px,6vw,90px)}
 .serie header{margin-bottom:clamp(40px,6vw,90px);align-items:end}
-.serie .rotulo{grid-column:1/4}
-.serie h2{grid-column:4/9;margin:0;font-weight:500;font-variation-settings:"wdth" 120;font-size:clamp(44px,6.5vw,96px);line-height:.95;letter-spacing:-.02em;text-wrap:balance}
-.serie .intro{grid-column:9/13;margin:0;color:#cfc6b6;font-size:16.5px;max-width:36ch}
+.serie .rotulo{grid-column:1/13;padding-top:0}
+.serie .ficha{grid-column:1/13;margin:0 0 6px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--cinza)}
+.serie .ficha::before{content:"";flex:0 0 100%;width:40px;max-width:40px;height:3px;background:var(--cor);margin-bottom:12px}
+.serie .ficha span+span::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--cinza);margin:0 12px 2px 0;vertical-align:middle}
+.serie h2{grid-column:1/8;margin:0;font-weight:500;font-variation-settings:"wdth" 112;font-size:clamp(40px,5.2vw,84px);line-height:.95;letter-spacing:-.02em;text-wrap:balance}
+.serie .intro{grid-column:9/13;align-self:end;margin:0;color:#cfc6b6;font-size:16.5px;max-width:36ch}
 .folhas{row-gap:clamp(40px,7vw,110px)}
-.folhas figure{margin:0;grid-column:var(--c);align-self:var(--a,start);cursor:zoom-in}
+.folhas figure{margin:0;grid-column:var(--c);align-self:var(--a,start)}
 .folhas figure.desce{margin-top:clamp(0px,9vw,140px)}
-.folhas img{background:var(--preto-2);transition:opacity .4s}
-.folhas figure:hover img{opacity:.92}
+.ampliar{display:block;width:100%;padding:0;border:0;background:var(--preto-2);cursor:zoom-in}
+.ampliar img{transition:opacity .4s}
+.ampliar:hover img{opacity:.92}
+.ampliar:focus-visible{outline:2px solid var(--cor,var(--terracota));outline-offset:4px}
 
-/* pausas */
+/* pausa */
 .pausa{padding:clamp(40px,6vw,90px) 0}
-.pausa figure{margin:0;grid-column:var(--c);cursor:zoom-in}
+.pausa figure{margin:0;grid-column:var(--c)}
 
 /* sobre e serviços */
 .sobre{background:var(--areia);color:var(--tinta);padding:clamp(80px,11vw,160px) 0}
-.sobre .rotulo{grid-column:1/4;color:#6f6759}
+.sobre .rotulo{grid-column:1/4;color:var(--cinza-claro)}
 .sobre .texto{grid-column:4/11}
 .sobre .texto p{margin:0 0 1.1em;font-size:clamp(18px,1.6vw,21px);line-height:1.6;max-width:62ch}
 .sobre .texto p.abre{font-size:clamp(26px,3vw,40px);line-height:1.2;font-variation-settings:"wdth" 112;margin-bottom:.9em}
 .servicos{background:var(--areia-2);color:var(--tinta);padding:clamp(72px,10vw,140px) 0}
-.servicos .rotulo{grid-column:1/4;color:#6f6759}
+.servicos .rotulo{grid-column:1/4;color:var(--cinza-claro)}
 .servicos .lead{grid-column:4/12;margin:0 0 clamp(36px,5vw,64px);font-size:clamp(22px,2.4vw,32px);line-height:1.25;text-wrap:balance}
 .servicos .cols{grid-column:4/13;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 28px}
 .servicos h3{margin:0 0 12px;font-size:18px;font-weight:600;font-variation-settings:"wdth" 112;padding-top:14px;border-top:1px solid #b9ad97}
@@ -93,8 +126,13 @@ a{color:inherit}
 .servicos .obs{grid-column:4/12;margin:clamp(32px,4vw,56px) 0 0;font-size:15.5px;color:#4d463b;max-width:60ch}
 
 /* contato */
-.contato{background:var(--preto-2);padding:clamp(64px,9vw,130px) 0 40px}
+.contato{background:var(--preto-2);padding:clamp(72px,10vw,140px) 0 40px}
 .contato .rotulo{grid-column:1/4}
+.contato .chamada{grid-column:4/12;margin:0 0 28px;font-size:clamp(26px,3.2vw,44px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+.contato .botoes{grid-column:4/12;display:flex;flex-wrap:wrap;gap:12px;margin-bottom:clamp(48px,6vw,80px)}
+.botao{display:inline-flex;align-items:center;min-height:48px;padding:12px 22px;border:1px solid var(--claro);text-decoration:none;font-size:16px}
+.botao.cheio{background:var(--claro);color:var(--tinta)}
+.botao:hover,.botao:focus-visible{background:var(--terracota);border-color:var(--terracota);color:#fff}
 .contato .lista{grid-column:4/12;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px;margin:0}
 .contato dt{font-size:14px;color:var(--cinza)}
 .contato dd{margin:4px 0 0;font-size:clamp(19px,1.8vw,24px);overflow-wrap:anywhere}
@@ -104,24 +142,33 @@ a{color:inherit}
 .nota{grid-column:1/13;margin-top:clamp(48px,7vw,90px);padding-top:20px;border-top:1px solid #2c2925;font-size:13px;color:var(--cinza);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 /* visor */
-.visor{position:fixed;inset:0;z-index:10;background:rgba(10,9,8,.96);display:none;align-items:center;justify-content:center;padding:4vh 4vw}
+.visor{position:fixed;inset:0;z-index:10;background:rgba(10,9,8,.97);display:none;flex-direction:column;align-items:center;justify-content:center;padding:56px 56px 64px}
 .visor.aberto{display:flex}
-.visor img{max-width:100%;max-height:92vh;width:auto;object-fit:contain}
-.visor button{position:absolute;min-width:44px;min-height:44px;background:none;border:0;color:var(--claro);font:inherit;font-size:15px;cursor:pointer;padding:10px 14px}
-#fechar{top:14px;right:14px}
-#ant{left:8px;top:50%;transform:translateY(-50%)}
-#prox{right:8px;top:50%;transform:translateY(-50%)}
-.visor button:focus-visible,a:focus-visible,figure:focus-visible{outline:2px solid var(--terracota);outline-offset:4px}
+.visor picture{display:contents}
+.visor img{max-width:100%;max-height:calc(100vh - 140px);width:auto;height:auto;object-fit:contain}
+.visor .legenda{position:absolute;left:64px;right:64px;bottom:16px;pointer-events:none;margin:0;text-align:center;font-size:14px;color:var(--cinza)}
+.visor .legenda b{font-weight:500;color:var(--claro)}
+.visor button{position:absolute;min-width:48px;min-height:48px;background:none;border:0;color:var(--claro);font:inherit;font-size:15px;cursor:pointer;padding:10px 14px}
+#fechar{top:8px;right:8px}
+#ant{left:4px;top:50%;transform:translateY(-50%);font-size:28px}
+#prox{right:4px;top:50%;transform:translateY(-50%);font-size:28px}
+.visor button:focus-visible,a:focus-visible{outline:2px solid var(--terracota);outline-offset:4px}
 
+@media (max-width:1240px){
+  .serie h2{grid-column:1/13}
+  .serie .intro{grid-column:1/13;margin-top:6px}
+}
 @media (max-width:900px){
   .capa h1{grid-column:1/13}
   .capa .sub{grid-column:1/13;margin-top:18px}
-  .rotulo,.manifesto .rotulo,.serie .rotulo,.sobre .rotulo,.servicos .rotulo,.contato .rotulo{grid-column:1/13}
-  .manifesto .corpo,.indice,.serie h2,.serie .intro,.sobre .texto,.servicos .lead,.servicos .cols,.servicos .obs,.contato .lista{grid-column:1/13}
+  .rotulo,.manifesto .rotulo,.sobre .rotulo,.servicos .rotulo,.contato .rotulo{grid-column:1/13}
+  .manifesto .corpo,.indice,.sobre .texto,.servicos .lead,.servicos .cols,.servicos .obs,.contato .lista,.contato .chamada,.contato .botoes{grid-column:1/13}
   .servicos .cols{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:600px){
-  .topo nav{gap:14px;font-size:14px}
+  .topo{font-size:14px;padding:10px 20px}
+  .topo nav{gap:16px}
+  .topo nav .so-largo{display:none}
   .capa img{object-position:52% 40%}
   .folhas{row-gap:28px}
   .folhas figure{grid-column:var(--cm,1/13)}
@@ -129,27 +176,34 @@ a{color:inherit}
   .pausa figure{grid-column:var(--cm,3/11)}
   .contato .lista,.servicos .cols{grid-template-columns:minmax(0,1fr)}
   .manifesto p.m + p.m{padding-left:0}
+  .visor{padding:52px 8px 64px}
+  #ant,#prox{top:auto;bottom:4px;transform:none}
+  .visor .legenda{bottom:18px}
 }
 </style>
 </head>
 <body>
+<a class="pular" href="#series">Pular para as séries</a>
 
-<header class="topo">
+<header class="topo" id="topo">
   <a class="marca" href="#inicio">Gabriel Faiya</a>
   <nav aria-label="Seções">
     <a href="#series">Séries</a>
     <a href="#sobre">Sobre</a>
-    <a href="#servicos">Serviços</a>
+    <a href="#servicos" class="so-largo">Serviços</a>
     <a href="#contato">Contato</a>
   </nav>
 </header>
 
 <main>
   <section class="capa" id="inicio" aria-label="Capa">
-    <img src="img/capa-cortejo.jpg" alt="Cortejo de dançarinas vestidas de branco e amarelo numa rua de Curitiba. No centro, uma mulher com pintura branca no rosto olha diretamente para a câmera.">
+    <picture><source type="image/webp" srcset="img/capa-cortejo-640.webp 640w, img/capa-cortejo-1080.webp 1080w, img/capa-cortejo-1600.webp 1600w" sizes="100vw"><img src="img/capa-cortejo.jpg" width="1932" height="1288" alt="Cortejo de dançarinas vestidas de branco e amarelo numa rua de Curitiba. No centro, uma mulher com pintura branca no rosto olha diretamente para a câmera." fetchpriority="high"></picture>
     <div class="texto">
       <h1>Gabriel<br>Faiya</h1>
-      <p class="sub">Fotografia e cinematografia<em>Olhar, sombra e luz.</em></p>
+      <div class="sub">
+        <p style="margin:0">Fotografia e cinematografia<em>Olhar, sombra e luz.</em></p>
+        <p class="acoes"><a href="#series">Ver séries</a><a href="#contato">Contato</a></p>
+      </div>
     </div>
   </section>
 
@@ -162,96 +216,95 @@ a{color:inherit}
       </div>
       <p class="rotulo" style="grid-column:1/4;margin-top:clamp(40px,7vw,100px);padding-top:30px">Gente de Curitiba</p>
       <ul class="indice" aria-label="Séries">
-        <li><a href="#cultura">Cultura em movimento</a></li>
-        <li><a href="#pedra">Pedra</a></li>
-        <li><a href="#cabeceira">Cabeceira</a></li>
-        <li><a href="#abebe">Abebé</a></li>
-        <li><a href="#guarda-me">Guarda-me</a></li>
+        <li><a href="#cultura" style="--cor:#b4532a"><b>Cultura em movimento</b><small>Documental</small></a></li>
+        <li><a href="#pedra" style="--cor:#c9952b"><b>Pedra</b><small>Editorial de moda</small></a></li>
+        <li><a href="#cabeceira" style="--cor:#4f7a5e"><b>Cabeceira</b><small>Ensaio autoral</small></a></li>
+        <li><a href="#abebe" style="--cor:#3f5f8a"><b>Abebé</b><small>Ensaio autoral</small></a></li>
+        <li><a href="#guarda-me" style="--cor:#b9ad97"><b>Guarda-me</b><small>Retrato em estúdio</small></a></li>
       </ul>
     </div>
   </section>
 
-  <section class="serie" id="cultura">
+  <section class="serie" id="cultura" style="--cor:#b4532a" data-serie="Cultura em movimento">
     <div class="wrap">
       <header class="grade">
-        <p class="rotulo">Gente de Curitiba<br>Série</p>
+        <p class="ficha"><span>Documental</span><span>Curitiba</span></p>
         <h2>Cultura em movimento</h2>
         <p class="intro">Cortejos, palcos e gravações. Registros da música, da dança e do hip-hop na cidade.</p>
       </header>
       <div class="folhas grade">
-        <figure style="--c:1/10" tabindex="0"><img src="img/cultura-1.jpg" alt="Dançarina sorrindo de olhos fechados no cortejo, com glitter dourado no rosto, colar de búzios e a frase Não é não escrita no ombro." loading="lazy"></figure>
-        <figure style="--c:2/7;--cm:1/11" tabindex="0"><img src="img/cultura-2.jpg" alt="Rapper de perfil diante do microfone, com as mãos no ar e um feixe de luz colorida atravessando a imagem." loading="lazy"></figure>
-        <figure class="desce" style="--c:8/13;--cm:3/13" tabindex="0"><img src="img/cultura-3.jpg" alt="Rapper sentado falando ao microfone num estúdio, com câmera e monitor desfocados em primeiro plano." loading="lazy"></figure>
-        <figure style="--c:4/10;--cm:1/12" tabindex="0"><img src="img/cultura-4.jpg" alt="DJ em preto e branco atrás da mesa de som, com a luz do palco formando um halo no cabelo." loading="lazy"></figure>
+        <figure style="--c:1/10"><button class="ampliar" type="button" data-grande="img/cultura-1-1600.webp"><picture><source type="image/webp" srcset="img/cultura-1-640.webp 640w, img/cultura-1-1080.webp 1080w, img/cultura-1-1600.webp 1600w" sizes="(max-width:600px) 92vw, 70vw"><img src="img/cultura-1.jpg" width="1932" height="1288" alt="Dançarina sorrindo de olhos fechados no cortejo, com glitter dourado no rosto, colar de búzios e a frase Não é não escrita no ombro." loading="lazy" decoding="async"></picture></button></figure>
+        <figure style="--c:2/7;--cm:1/11"><button class="ampliar" type="button" data-grande="img/cultura-2-1085.webp"><picture><source type="image/webp" srcset="img/cultura-2-640.webp 640w, img/cultura-2-1080.webp 1080w, img/cultura-2-1085.webp 1085w" sizes="(max-width:600px) 80vw, 40vw"><img src="img/cultura-2.jpg" width="1085" height="1356" alt="Rapper de perfil diante do microfone, com as mãos no ar e um feixe de luz colorida atravessando a imagem." loading="lazy" decoding="async"></picture></button></figure>
+        <figure class="desce" style="--c:8/13;--cm:3/13"><button class="ampliar" type="button" data-grande="img/cultura-3-1333.webp"><picture><source type="image/webp" srcset="img/cultura-3-640.webp 640w, img/cultura-3-1080.webp 1080w, img/cultura-3-1333.webp 1333w" sizes="(max-width:600px) 80vw, 40vw"><img src="img/cultura-3.jpg" width="1333" height="2000" alt="Rapper sentado falando ao microfone num estúdio, com câmera e monitor desfocados em primeiro plano." loading="lazy" decoding="async"></picture></button></figure>
+        <figure style="--c:4/10;--cm:1/12"><button class="ampliar" type="button" data-grande="img/cultura-4-1365.webp"><picture><source type="image/webp" srcset="img/cultura-4-640.webp 640w, img/cultura-4-1080.webp 1080w, img/cultura-4-1365.webp 1365w" sizes="(max-width:600px) 88vw, 48vw"><img src="img/cultura-4.jpg" width="1365" height="1560" alt="DJ em preto e branco atrás da mesa de som, com a luz do palco formando um halo no cabelo." loading="lazy" decoding="async"></picture></button></figure>
       </div>
     </div>
   </section>
 
-  <section class="pausa" aria-label="Detalhe">
+  <section class="pausa" aria-label="Detalhe" data-serie="Detalhe">
     <div class="wrap grade">
-      <figure style="--c:8/11;--cm:4/12" tabindex="0"><img src="img/detalhe-perolas.jpg" alt="Mão segurando uma fita branca, com pulseira dourada e pérolas, em luz baixa." loading="lazy"></figure>
+      <figure style="--c:8/11;--cm:4/12"><button class="ampliar" type="button" data-grande="img/detalhe-perolas-1333.webp"><picture><source type="image/webp" srcset="img/detalhe-perolas-640.webp 640w, img/detalhe-perolas-1080.webp 1080w, img/detalhe-perolas-1333.webp 1333w" sizes="(max-width:600px) 66vw, 25vw"><img src="img/detalhe-perolas.jpg" width="1333" height="2000" alt="Mão segurando uma fita branca, com pulseira dourada e pérolas, em luz baixa." loading="lazy" decoding="async"></picture></button></figure>
     </div>
   </section>
 
-  <section class="serie" id="pedra">
+  <section class="serie" id="pedra" style="--cor:#c9952b" data-serie="Pedra">
     <div class="wrap">
       <header class="grade">
-        <p class="rotulo">Gente de Curitiba<br>Série</p>
+        <p class="ficha"><span>Editorial de moda</span><span>Curitiba</span></p>
         <h2>Pedra</h2>
         <p class="intro">Ensaio de moda feito numa formação rochosa, em Curitiba. As imagens se aproximam aos poucos, da paisagem até o gesto.</p>
       </header>
       <div class="folhas grade">
-        <figure style="--c:1/5;--cm:1/9" tabindex="0"><img src="img/pedra-1.jpg" alt="Paredão de rocha em tons de areia, ferrugem e cinza sob céu azul." loading="lazy"></figure>
-        <figure class="desce" style="--c:6/12;--cm:3/13" tabindex="0"><img src="img/pedra-2.jpg" alt="Jovem de óculos claros e moletom bordado em verde, de pé sobre a rocha, pequeno diante do paredão." loading="lazy"></figure>
-        <figure style="--c:2/7;--cm:1/11" tabindex="0"><img src="img/pedra-3.jpg" alt="O mesmo jovem sentado na rocha, ajeitando os óculos com a mão." loading="lazy"></figure>
-        <figure class="desce" style="--c:8/13" tabindex="0"><img src="img/pedra-4.jpg" alt="Vista de baixo para cima, com a mão de unhas longas estendida em direção à câmera e o céu azul ao fundo." loading="lazy"></figure>
+        <figure style="--c:1/5;--cm:1/9"><button class="ampliar" type="button" data-grande="img/pedra-1-1125.webp"><picture><source type="image/webp" srcset="img/pedra-1-640.webp 640w, img/pedra-1-1080.webp 1080w, img/pedra-1-1125.webp 1125w" sizes="(max-width:600px) 66vw, 32vw"><img src="img/pedra-1.jpg" width="1125" height="2000" alt="Paredão de rocha em tons de areia, ferrugem e cinza sob céu azul." loading="lazy" decoding="async"></picture></button></figure>
+        <figure class="desce" style="--c:6/12;--cm:3/13"><button class="ampliar" type="button" data-grande="img/pedra-2-1125.webp"><picture><source type="image/webp" srcset="img/pedra-2-640.webp 640w, img/pedra-2-1080.webp 1080w, img/pedra-2-1125.webp 1125w" sizes="(max-width:600px) 80vw, 45vw"><img src="img/pedra-2.jpg" width="1125" height="2000" alt="Jovem de óculos claros e moletom bordado em verde, de pé sobre a rocha, pequeno diante do paredão." loading="lazy" decoding="async"></picture></button></figure>
+        <figure style="--c:2/7;--cm:1/11"><button class="ampliar" type="button" data-grande="img/pedra-3-1125.webp"><picture><source type="image/webp" srcset="img/pedra-3-640.webp 640w, img/pedra-3-1080.webp 1080w, img/pedra-3-1125.webp 1125w" sizes="(max-width:600px) 80vw, 40vw"><img src="img/pedra-3.jpg" width="1125" height="2000" alt="O mesmo jovem sentado na rocha, ajeitando os óculos com a mão." loading="lazy" decoding="async"></picture></button></figure>
+        <figure class="desce" style="--c:8/13"><button class="ampliar" type="button" data-grande="img/pedra-4-1125.webp"><picture><source type="image/webp" srcset="img/pedra-4-640.webp 640w, img/pedra-4-1080.webp 1080w, img/pedra-4-1125.webp 1125w" sizes="(max-width:600px) 92vw, 40vw"><img src="img/pedra-4.jpg" width="1125" height="2000" alt="Vista de baixo para cima, com a mão de unhas longas estendida em direção à câmera e o céu azul ao fundo." loading="lazy" decoding="async"></picture></button></figure>
       </div>
     </div>
   </section>
 
-  <section class="serie" id="cabeceira">
+  <section class="serie" id="cabeceira" style="--cor:#4f7a5e" data-serie="Cabeceira">
     <div class="wrap">
       <header class="grade">
-        <p class="rotulo">Gente de Curitiba<br>Série</p>
+        <p class="ficha"><span>Ensaio autoral</span><span>Curitiba</span></p>
         <h2>Cabeceira</h2>
         <p class="intro">Cabeceira é o lugar onde o rio nasce. Ensaio feito numa cachoeira, em Curitiba, sobre água, adorno e origem.</p>
       </header>
       <div class="folhas grade">
-        <figure style="--c:1/7" tabindex="0"><img src="img/cabeceira-1.jpg" alt="Mulher de vestido branco de crochê sentada dentro do rio, diante de uma cachoeira, com as mãos junto ao rosto." loading="lazy"></figure>
-        <figure style="--c:8/12;--a:end;--cm:3/13" tabindex="0"><img src="img/cabeceira-2.jpg" alt="Retrato de perto, olhos fechados, mãos tocando o rosto, pulseiras e anéis dourados." loading="lazy"></figure>
-        <figure style="--c:3/7;--cm:1/10" tabindex="0"><img src="img/cabeceira-3.jpg" alt="Mãos molhadas segurando búzios sobre a água do rio." loading="lazy"></figure>
-        <figure style="--c:8/11;--a:center;--cm:5/13" tabindex="0"><img src="img/cabeceira-4.jpg" alt="Mão mergulhada na água rasa, formando ondas, com pulseiras em tons de terra." loading="lazy"></figure>
+        <figure style="--c:1/7"><button class="ampliar" type="button" data-grande="img/cabeceira-1-1124.webp"><picture><source type="image/webp" srcset="img/cabeceira-1-640.webp 640w, img/cabeceira-1-1080.webp 1080w, img/cabeceira-1-1124.webp 1124w" sizes="(max-width:600px) 92vw, 48vw"><img src="img/cabeceira-1.jpg" width="1124" height="2000" alt="Mulher de vestido branco de crochê sentada dentro do rio, diante de uma cachoeira, com as mãos junto ao rosto." loading="lazy" decoding="async"></picture></button></figure>
+        <figure style="--c:8/12;--a:end;--cm:3/13"><button class="ampliar" type="button" data-grande="img/cabeceira-2-1127.webp"><picture><source type="image/webp" srcset="img/cabeceira-2-640.webp 640w, img/cabeceira-2-1080.webp 1080w, img/cabeceira-2-1127.webp 1127w" sizes="(max-width:600px) 80vw, 32vw"><img src="img/cabeceira-2.jpg" width="1127" height="2000" alt="Retrato de perto, olhos fechados, mãos tocando o rosto, pulseiras e anéis dourados." loading="lazy" decoding="async"></picture></button></figure>
+        <figure style="--c:3/7;--cm:1/10"><button class="ampliar" type="button" data-grande="img/cabeceira-3-1125.webp"><picture><source type="image/webp" srcset="img/cabeceira-3-640.webp 640w, img/cabeceira-3-1080.webp 1080w, img/cabeceira-3-1125.webp 1125w" sizes="(max-width:600px) 72vw, 32vw"><img src="img/cabeceira-3.jpg" width="1125" height="2000" alt="Mãos molhadas segurando búzios sobre a água do rio." loading="lazy" decoding="async"></picture></button></figure>
+        <figure style="--c:8/11;--a:center;--cm:5/13"><button class="ampliar" type="button" data-grande="img/cabeceira-4-1130.webp"><picture><source type="image/webp" srcset="img/cabeceira-4-640.webp 640w, img/cabeceira-4-1080.webp 1080w, img/cabeceira-4-1130.webp 1130w" sizes="(max-width:600px) 66vw, 25vw"><img src="img/cabeceira-4.jpg" width="1130" height="2000" alt="Mão mergulhada na água rasa, formando ondas, com pulseiras em tons de terra." loading="lazy" decoding="async"></picture></button></figure>
       </div>
     </div>
   </section>
 
-
-  <section class="serie" id="abebe">
+  <section class="serie" id="abebe" style="--cor:#3f5f8a" data-serie="Abebé">
     <div class="wrap">
       <header class="grade">
-        <p class="rotulo">Gente de Curitiba<br>Série</p>
+        <p class="ficha"><span>Ensaio autoral</span><span>Curitiba</span></p>
         <h2>Abebé</h2>
         <p class="intro">Ensaio de pele, adornos e abebé.</p>
       </header>
       <div class="folhas grade">
-        <figure style="--c:2/7" tabindex="0"><img src="img/inscricao-1.jpg" alt="Mulher sentada na penumbra segurando um espelho antigo de moldura recortada, olhando para a câmera." loading="lazy"></figure>
-        <figure class="desce" style="--c:8/13;--cm:3/13" tabindex="0"><img src="img/inscricao-2.jpg" alt="De costas, braços erguidos e mãos unidas, com tatuagens nos braços e nas costas e um brinco lilás." loading="lazy"></figure>
-        <figure style="--c:1/6;--cm:1/11" tabindex="0"><img src="img/inscricao-3.jpg" alt="Perfil com a mão pousada no ombro tatuado e um brinco de discos iridescentes." loading="lazy"></figure>
-        <figure style="--c:7/11;--a:end;--cm:4/13" tabindex="0"><img src="img/inscricao-4.jpg" alt="Perfil de olhos fechados, rosto erguido, brinco de discos e tatuagem no pescoço." loading="lazy"></figure>
+        <figure style="--c:2/7"><button class="ampliar" type="button" data-grande="img/inscricao-1-1333.webp"><picture><source type="image/webp" srcset="img/inscricao-1-640.webp 640w, img/inscricao-1-1080.webp 1080w, img/inscricao-1-1333.webp 1333w" sizes="(max-width:600px) 92vw, 40vw"><img src="img/inscricao-1.jpg" width="1333" height="2000" alt="Mulher sentada na penumbra segurando um espelho antigo de moldura recortada, olhando para a câmera." loading="lazy" decoding="async"></picture></button></figure>
+        <figure class="desce" style="--c:8/13;--cm:3/13"><button class="ampliar" type="button" data-grande="img/inscricao-2-1333.webp"><picture><source type="image/webp" srcset="img/inscricao-2-640.webp 640w, img/inscricao-2-1080.webp 1080w, img/inscricao-2-1333.webp 1333w" sizes="(max-width:600px) 80vw, 40vw"><img src="img/inscricao-2.jpg" width="1333" height="2000" alt="De costas, braços erguidos e mãos unidas, com tatuagens nos braços e nas costas e um brinco lilás." loading="lazy" decoding="async"></picture></button></figure>
+        <figure style="--c:1/6;--cm:1/11"><button class="ampliar" type="button" data-grande="img/inscricao-3-1333.webp"><picture><source type="image/webp" srcset="img/inscricao-3-640.webp 640w, img/inscricao-3-1080.webp 1080w, img/inscricao-3-1333.webp 1333w" sizes="(max-width:600px) 80vw, 40vw"><img src="img/inscricao-3.jpg" width="1333" height="2000" alt="Perfil com a mão pousada no ombro tatuado e um brinco de discos iridescentes." loading="lazy" decoding="async"></picture></button></figure>
+        <figure style="--c:7/11;--a:end;--cm:4/13"><button class="ampliar" type="button" data-grande="img/inscricao-4-1333.webp"><picture><source type="image/webp" srcset="img/inscricao-4-640.webp 640w, img/inscricao-4-1080.webp 1080w, img/inscricao-4-1333.webp 1333w" sizes="(max-width:600px) 72vw, 32vw"><img src="img/inscricao-4.jpg" width="1333" height="2000" alt="Perfil de olhos fechados, rosto erguido, brinco de discos e tatuagem no pescoço." loading="lazy" decoding="async"></picture></button></figure>
       </div>
     </div>
   </section>
 
-  <section class="serie" id="guarda-me">
+  <section class="serie" id="guarda-me" style="--cor:#b9ad97" data-serie="Guarda-me">
     <div class="wrap">
       <header class="grade">
-        <p class="rotulo">Gente de Curitiba<br>Série</p>
+        <p class="ficha"><span>Retrato em estúdio</span><span>Curitiba</span></p>
         <h2>Guarda-me</h2>
         <p class="intro">Retratos em estúdio com uma espada-de-são-jorge, planta ligada à proteção na cultura brasileira.</p>
       </header>
       <div class="folhas grade">
-        <figure style="--c:1/7" tabindex="0"><img src="img/guarda-1.jpg" alt="Retrato de perto de uma mulher de cabelos cacheados, com metade do rosto encoberta por uma folha de espada-de-são-jorge e argolas douradas." loading="lazy"></figure>
-        <figure class="desce" style="--c:8/12;--cm:3/13" tabindex="0"><img src="img/guarda-2.jpg" alt="A mesma mulher sentada no chão do estúdio, diante de um fundo verde escuro, olhando para a câmera." loading="lazy"></figure>
+        <figure style="--c:1/7"><button class="ampliar" type="button" data-grande="img/guarda-1-1519.webp"><picture><source type="image/webp" srcset="img/guarda-1-640.webp 640w, img/guarda-1-1080.webp 1080w, img/guarda-1-1519.webp 1519w" sizes="(max-width:600px) 92vw, 48vw"><img src="img/guarda-1.jpg" width="1519" height="2000" alt="Retrato de perto de uma mulher de cabelos cacheados, com metade do rosto encoberta por uma folha de espada-de-são-jorge e argolas douradas." loading="lazy" decoding="async"></picture></button></figure>
+        <figure class="desce" style="--c:8/12;--cm:3/13"><button class="ampliar" type="button" data-grande="img/guarda-2-1600.webp"><picture><source type="image/webp" srcset="img/guarda-2-640.webp 640w, img/guarda-2-1080.webp 1080w, img/guarda-2-1600.webp 1600w" sizes="(max-width:600px) 80vw, 32vw"><img src="img/guarda-2.jpg" width="1600" height="2000" alt="A mesma mulher sentada no chão do estúdio, diante de um fundo verde escuro, olhando para a câmera." loading="lazy" decoding="async"></picture></button></figure>
       </div>
     </div>
   </section>
@@ -297,46 +350,100 @@ a{color:inherit}
 <footer class="contato" id="contato">
   <div class="wrap grade">
     <p class="rotulo">Contato</p>
+    <p class="chamada">Tem um projeto, uma ideia ou uma história que merece ser contada visualmente? Vamos conversar.</p>
+    <div class="botoes">
+      <a class="botao cheio" href="https://wa.me/5541999808263?text=Ol%C3%A1%2C%20Gabriel!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.">Conversar no WhatsApp</a>
+      <a class="botao" href="mailto:fotosgabrielfaiya@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio">Enviar e-mail</a>
+    </div>
     <dl class="lista">
       <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/gabrielfaiya/">@gabrielfaiya</a></dd></div>
       <div><dt>E-mail</dt><dd class="email"><a href="mailto:fotosgabrielfaiya@gmail.com">fotosgabrielfaiya@gmail.com</a></dd></div>
       <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5541999808263">(41) 99980-8263</a></dd></div>
       <div><dt>Disponibilidade</dt><dd>Aberto a trabalhos e projetos em Curitiba, no Brasil e no exterior</dd></div>
     </dl>
-    <div class="nota"><span>Gabriel Faiya, fotografia</span><span>Todas as imagens com autorização de uso</span></div>
+    <div class="nota"><span>Gabriel Faiya, fotografia e cinematografia</span><span>Todas as imagens com autorização de uso</span></div>
   </div>
 </footer>
 
-<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Fotografia ampliada">
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Fotografia ampliada" hidden>
   <button type="button" id="fechar">Fechar</button>
   <button type="button" id="ant" aria-label="Foto anterior">‹</button>
   <img id="visor-img" alt="">
   <button type="button" id="prox" aria-label="Próxima foto">›</button>
+  <p class="legenda" id="legenda" aria-live="polite"></p>
 </div>
 
 <script>
 {
+  /* menu que some ao descer e volta ao subir */
+  const topo=document.getElementById('topo');
+  let ultimo=window.scrollY;
+  const capaAltura=()=>document.getElementById('inicio').offsetHeight-80;
+  window.addEventListener('scroll',()=>{
+    const y=window.scrollY;
+    topo.classList.toggle('solido',y>capaAltura());
+    topo.classList.toggle('escondido',y>ultimo&&y>200);
+    ultimo=y;
+  },{passive:true});
+  topo.addEventListener('focusin',()=>topo.classList.remove('escondido'));
+
+  /* visor por série */
   const visor=document.getElementById('visor');
   const vImg=document.getElementById('visor-img');
+  const legenda=document.getElementById('legenda');
   const fechar=document.getElementById('fechar');
-  const figs=[...document.querySelectorAll('.folhas figure,.pausa figure')];
-  let atual=-1;
-  const mostra=(i)=>{atual=(i+figs.length)%figs.length;const im=figs[atual].querySelector('img');vImg.src=im.src;vImg.alt=im.alt;};
-  const abrir=(i)=>{mostra(i);visor.classList.add('aberto');fechar.focus();};
-  const sair=()=>{visor.classList.remove('aberto');vImg.removeAttribute('src');if(atual>=0)figs[atual].focus();};
-  figs.forEach((f,i)=>{
-    f.addEventListener('click',()=>abrir(i));
-    f.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();abrir(i);}});
-  });
+  const btAnt=document.getElementById('ant');
+  const btProx=document.getElementById('prox');
+  let grupo=[],atual=0,origem=null;
+
+  const mostra=(i)=>{
+    atual=(i+grupo.length)%grupo.length;
+    const b=grupo[atual],im=b.querySelector('img');
+    vImg.src=b.dataset.grande;vImg.alt=im.alt;
+    const nome=b.closest('[data-serie]').dataset.serie;
+    legenda.innerHTML='';
+    const n=document.createElement('b');n.textContent=nome;
+    legenda.append(n,document.createTextNode(grupo.length>1?'  '+(atual+1)+' de '+grupo.length:''));
+    btAnt.hidden=btProx.hidden=grupo.length<2;
+  };
+  const abrir=(b)=>{
+    const sec=b.closest('[data-serie]');
+    grupo=[...sec.querySelectorAll('.ampliar')];
+    origem=b;mostra(grupo.indexOf(b));
+    visor.hidden=false;visor.classList.add('aberto');
+    document.body.classList.add('travado');
+    sec.style.getPropertyValue('--cor')&&visor.style.setProperty('--terracota',sec.style.getPropertyValue('--cor'));
+    fechar.focus();
+  };
+  const sair=()=>{
+    visor.classList.remove('aberto');visor.hidden=true;vImg.removeAttribute('src');
+    document.body.classList.remove('travado');
+    if(origem)origem.focus();
+  };
+  document.querySelectorAll('.ampliar').forEach(b=>b.addEventListener('click',()=>abrir(b)));
   fechar.addEventListener('click',sair);
-  document.getElementById('ant').addEventListener('click',e=>{e.stopPropagation();mostra(atual-1);});
-  document.getElementById('prox').addEventListener('click',e=>{e.stopPropagation();mostra(atual+1);});
+  btAnt.addEventListener('click',e=>{e.stopPropagation();mostra(atual-1);});
+  btProx.addEventListener('click',e=>{e.stopPropagation();mostra(atual+1);});
   visor.addEventListener('click',e=>{if(e.target===visor)sair();});
   document.addEventListener('keydown',e=>{
-    if(!visor.classList.contains('aberto'))return;
+    if(visor.hidden)return;
     if(e.key==='Escape')sair();
-    if(e.key==='ArrowRight')mostra(atual+1);
-    if(e.key==='ArrowLeft')mostra(atual-1);
+    else if(e.key==='ArrowRight'&&grupo.length>1)mostra(atual+1);
+    else if(e.key==='ArrowLeft'&&grupo.length>1)mostra(atual-1);
+    else if(e.key==='Tab'){
+      const f=[fechar,btAnt,btProx].filter(x=>!x.hidden);
+      const i=f.indexOf(document.activeElement);
+      e.preventDefault();
+      f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus();
+    }
+  });
+  /* deslizar no celular */
+  let x0=null;
+  visor.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+  visor.addEventListener('touchend',e=>{
+    if(x0===null||grupo.length<2)return;
+    const dx=e.changedTouches[0].clientX-x0;x0=null;
+    if(Math.abs(dx)>50)mostra(atual+(dx<0?1:-1));
   });
 }
 </script>
